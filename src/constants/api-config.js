@@ -10,5 +10,6 @@ export default {
   },
   REQUEST_LOG_FORMAT: ":method :url :status :res[content-length] - :response-time ms",
   STATUS_MESSAGE: "API Online",
-  SERVER_PORT: 80
+  SERVER_PORT: 80,
+  INTERNAL_ERROR_MESSAGE: "Oops internal error"
 };
