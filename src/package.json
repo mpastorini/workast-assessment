@@ -1,0 +1,5 @@
+{
+  "name": "app",
+  "description": "development app package",
+  "main": "index.js"
+}
