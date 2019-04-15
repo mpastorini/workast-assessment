@@ -8,6 +8,7 @@ export default {
       PORT: "@@@PORT@@@"
     }
   },
+  REQUEST_LOG_FORMAT: ":method :url :status :res[content-length] - :response-time ms",
   STATUS_MESSAGE: "API Online",
   SERVER_PORT: 80
 };

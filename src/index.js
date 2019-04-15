@@ -4,6 +4,7 @@ import bodyParser from "body-parser";
 import {API_CONFIG, ROUTES} from "app/constants";
 import { protectedRouter, publicRouter } from "app/routers";
 import { replace } from "ramda";
+import { loggerMiddleware } from "app/middlewares";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app
   .use(compression())
   .use(bodyParser.urlencoded({extended: false}))
   .use(bodyParser.json())
+  .use(loggerMiddleware)
   .use(ROUTES.API.SUBROUTES.PUBLIC.ROUTE, publicRouter)
   .use(ROUTES.API.SUBROUTES.PROTECTED.ROUTE, protectedRouter)
   .listen(API_CONFIG.SERVER_PORT, serverStartCallback);
