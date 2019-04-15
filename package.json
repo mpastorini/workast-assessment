@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run slint && nodemon --exec babel-node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "slint": "./node_modules/.bin/eslint --fix --cache src/"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/mpastorini/workast-assessment/issues"
   },
-  "homepage": "https://github.com/mpastorini/workast-assessment#readme"
+  "homepage": "https://github.com/mpastorini/workast-assessment#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.16.0",
+    "nodemon": "^1.18.10"
+  }
 }
