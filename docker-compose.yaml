@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  # Start Entities
+  mongo:
+    image: mongo
+    restart: always
+  api:
+    build:
+      context: ./
+    ports:
+      - "80:80"
+    volumes:
+    - ./src:/opt/workast-assessment/src
+    depends_on:
+      - mongo
+    links:
+      - mongo

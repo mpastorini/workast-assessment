@@ -3,7 +3,7 @@ FROM node:8.11.3-alpine
 # Set up environment
 ENV TERM=xterm-256color
 ENV PROJECT_NAME workast-assessment
-ENV PROJECT_ROOT $HOME/$PROJECT_NAME
+ENV PROJECT_ROOT /opt/$PROJECT_NAME
 
 # Install dependencies
 RUN mkdir -p /tmp/$PROJECT_NAME
