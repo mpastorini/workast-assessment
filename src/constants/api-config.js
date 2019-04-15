@@ -13,6 +13,7 @@ export default {
   SERVER_PORT: process.env.PORT,
   ENVIRONMENT: process.env.ENVIRONMENT,
   INTERNAL_ERROR_MESSAGE: "Oops internal error",
+  MONGOOSE_URL: "mongodb://mongo:27017/workast-assessment",
   ENVIRONMENTS: {
     DEVELOPMENT: "development",
     PRODUCTION: "production",
