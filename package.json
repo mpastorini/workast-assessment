@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mpastorini/workast-assessment#readme",
   "devDependencies": {
+    "app": "file:src",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-plugin-add-module-exports": "^1.0.0",
