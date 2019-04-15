@@ -10,6 +10,13 @@ export default {
   },
   REQUEST_LOG_FORMAT: ":method :url :status :res[content-length] - :response-time ms",
   STATUS_MESSAGE: "API Online",
-  SERVER_PORT: 80,
-  INTERNAL_ERROR_MESSAGE: "Oops internal error"
+  SERVER_PORT: process.env.PORT,
+  ENVIRONMENT: process.env.ENVIRONMENT,
+  INTERNAL_ERROR_MESSAGE: "Oops internal error",
+  ENVIRONMENTS: {
+    DEVELOPMENT: "development",
+    PRODUCTION: "production",
+    "STAGE": "stage",
+    "TEST": "test"
+  }
 };
