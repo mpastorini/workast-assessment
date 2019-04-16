@@ -40,6 +40,7 @@
     "mongoose": "^5.5.1",
     "morgan": "^1.9.1",
     "ramda": "^0.26.1",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "validate": "^4.5.1"
   }
 }
