@@ -15,6 +15,7 @@ export default {
   AUTH_TOKEN: process.env.ENVIRONMENT === "test" ? "1234" : process.env.AUTH_TOKEN,
   INTERNAL_ERROR_MESSAGE: "Oops internal error",
   MONGOOSE_URL: "mongodb://mongo:27017/workast-assessment",
+  "PROTECTED_STATUS_MESSAGE": "Logged in",
   ENVIRONMENTS: {
     DEVELOPMENT: "development",
     PRODUCTION: "production",
