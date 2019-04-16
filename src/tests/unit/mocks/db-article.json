@@ -1,0 +1,8 @@
+{
+  "_id": "article1",
+  "userId": "user1",
+  "title": "Example title",
+  "text": "Example text",
+  "tags": ["example", "interesting"],
+  "__v": 0
+}

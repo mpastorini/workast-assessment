@@ -1,5 +1,7 @@
-import createUserMock from "./create-user";
+import dbUserMock from "./db-user";
+import dbArticleMock from "./db-article";
 
 export {
-  createUserMock
+  dbUserMock,
+  dbArticleMock
 };
