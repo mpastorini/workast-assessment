@@ -1,7 +1,10 @@
 import protectedRouter from "./protected";
 import publicRouter from "./public";
 
-export default{
+/**
+ * @description Express routers
+ */
+export {
   protectedRouter,
   publicRouter
 };

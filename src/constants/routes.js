@@ -18,6 +18,9 @@ export default {
         SUBROUTES: {
           STATUS: {
             ROUTE: "/status"
+          },
+          USERS: {
+            ROUTE: "/users"
           }
         }
       }
