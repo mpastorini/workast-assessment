@@ -20,3 +20,6 @@ docker-compose build && docker-compose up
 - Tests
 - Constants
 - JSDoc
+
+## Tests
+The only tests in this project are unit, all of them treat with mock data so all the functionalities are insured except the database operations and its schemas integrity.

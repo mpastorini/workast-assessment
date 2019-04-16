@@ -15,11 +15,13 @@ const serverStartCallback = () => console.log(replace(API_CONFIG.STARTING_MESSAG
 if(API_CONFIG.ENVIRONMENT !== API_CONFIG.ENVIRONMENTS.TEST)
   mongoose.connect(API_CONFIG.MONGOOSE_URL, { useNewUrlParser: true });
 
+if(API_CONFIG.ENVIRONMENT !== API_CONFIG.ENVIRONMENTS.TEST)
+  app.use(loggerMiddleware);
+
 app
   .use(compression())
   .use(bodyParser.urlencoded({extended: false}))
   .use(bodyParser.json())
-  .use(loggerMiddleware)
   .use(ROUTES.API.SUBROUTES.PUBLIC.ROUTE, publicRouter)
   .use(ROUTES.API.SUBROUTES.PROTECTED.ROUTE, protectedRouter)
   .use(exceptionMiddleware)

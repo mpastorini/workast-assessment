@@ -1,7 +1,7 @@
 import express from "express";
 require("express-async-errors"); // Technical Debt 
 import ROUTES from "app/constants/routes";
-import { protectedStatusController } from "app/controllers";
+import { protectedStatusController, createUserController } from "app/controllers";
 import { authenticationMiddleware } from "app/middlewares";
 
 /**
@@ -9,4 +9,5 @@ import { authenticationMiddleware } from "app/middlewares";
  */
 export default express.Router()
   .use(authenticationMiddleware)
+  .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.USERS.ROUTE, createUserController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.STATUS.ROUTE, protectedStatusController);
