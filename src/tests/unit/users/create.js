@@ -3,7 +3,7 @@ import app from "app";
 import sinon from "sinon";
 import { describe, it, afterEach } from "mocha";
 import { usersRepository } from "app/repositories";
-import { createUserMock } from "app/tests/unit/mocks";
+import { dbUserMock } from "app/tests/unit/mocks";
 
 const sandbox = sinon.createSandbox();
 
@@ -13,7 +13,7 @@ describe("POST /protected/users", function () {
   });
 
   it("when post a valid user, then returns status 200 and the created user", async () => {
-    sandbox.stub(usersRepository, "create").resolves(createUserMock);
+    sandbox.stub(usersRepository, "create").resolves(dbUserMock);
 
     const newTestUser = {
       name: "test",
@@ -25,11 +25,15 @@ describe("POST /protected/users", function () {
       .send(newTestUser)
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(200, createUserMock);
+      .expect(200, {
+        _id: "user1",
+        name: "test",
+        avatar: "http://test/img/test.jpg"
+      });
   });
 
   it("when post an invalid user, then returns status 400 and errors", async () => {
-    sandbox.stub(usersRepository, "create").resolves(createUserMock);
+    sandbox.stub(usersRepository, "create").resolves(dbUserMock);
 
     const newTestUser = {
       name: 1234,
@@ -54,7 +58,7 @@ describe("POST /protected/users", function () {
   });
 
   it("when post an empty user, then returns status 400 and errors", async () => {
-    sandbox.stub(usersRepository, "create").resolves(createUserMock);
+    sandbox.stub(usersRepository, "create").resolves(dbUserMock);
 
     const newTestUser = {};
 
