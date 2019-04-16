@@ -1,6 +1,11 @@
 import httpStatus from "http-status";
 
-module.exports = function badRequest(errorCode, errors) {
+/**
+ * @description Bad Request exception
+ * @param errorCode {String}
+ * @param errors {Object}
+ */
+module.exports = function BadRequest(errorCode, errors) {
   Error.captureStackTrace(this, this.constructor);
 
   this.name = httpStatus["400_NAME"];
