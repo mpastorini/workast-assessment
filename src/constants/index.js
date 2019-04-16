@@ -1,6 +1,7 @@
 import API_CONFIG from "./api-config";
 import ROUTES from "./routes";
 import EXCEPTIONS from "./exceptions";
+import DECORATORS from "./decorators";
 
 /**
  * @description Constants of the application
@@ -8,5 +9,6 @@ import EXCEPTIONS from "./exceptions";
 export {
   API_CONFIG,
   ROUTES,
-  EXCEPTIONS
+  EXCEPTIONS,
+  DECORATORS
 };

@@ -1,4 +1,4 @@
 import { pick } from "ramda";
 import { DECORATORS } from "app/constants";
 
-export default (user) => pick(DECORATORS.USER.PROPERTIES, user);
+export default (article) => pick(DECORATORS.ARTICLE.PROPERTIES, article);
