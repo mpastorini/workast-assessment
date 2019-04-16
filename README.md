@@ -2,6 +2,7 @@
 
 ##Installation
 ```
+cp .env_example .env
 npm install
 ```
 ##Execution
