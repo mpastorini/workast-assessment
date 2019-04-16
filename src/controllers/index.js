@@ -1,5 +1,7 @@
-import statusController from "./status";
+import statusController from "./public/status";
+import protectedStatusController from "./protected/status";
 
 export default {
-  statusController
+  statusController,
+  protectedStatusController
 };
