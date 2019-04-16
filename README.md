@@ -6,9 +6,14 @@ cp .env_example .env
 npm install
 ```
 
+## Tests
+```
+npm test
+```
+
 ## Execution
 ```
-npm start
+docker-compose build && docker-compose up
 ```
 
 ## Auto-Documentation factors
