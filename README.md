@@ -1,11 +1,17 @@
 # workast-assessment
 
-##Installation
+## Installation
 ```
 cp .env_example .env
 npm install
 ```
-##Execution
+
+## Execution
 ```
 npm start
 ```
+
+## Auto-Documentation factors
+- Tests
+- Constants
+- JSDoc
