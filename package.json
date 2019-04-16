@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "export ENVIRONMENT=test && npm run slint && nyc mocha -r dotenv/config ./src/tests --recursive --require babel-core/register --exit",
+    "test": "export ENVIRONMENT=test && npm run slint && mocha -r dotenv/config ./src/tests --recursive --require babel-core/register --exit",
+    "test:coverage": "export ENVIRONMENT=test && npm run slint && nyc mocha -r dotenv/config ./src/tests --recursive --require babel-core/register --exit",
     "start": "export ENVIRONMENT=development && npm run slint && nodemon --exec 'node -r dotenv/config -r babel-core/register' ./src/index.js",
     "slint": "./node_modules/.bin/eslint --fix --cache src/"
   },
