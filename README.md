@@ -1,4 +1,4 @@
-# workast-assessment
+# Workast Assessment
 
 ## Installation
 ```
