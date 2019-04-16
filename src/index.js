@@ -12,7 +12,8 @@ const app = express();
 const serverStartCallback = () => console.log(replace(API_CONFIG.STARTING_MESSAGE.REPLACEMENTS.PORT, 
   API_CONFIG.SERVER_PORT, API_CONFIG.STARTING_MESSAGE.TEXT));
 
-mongoose.connect(API_CONFIG.MONGOOSE_URL, { useNewUrlParser: true });
+if(API_CONFIG.ENVIRONMENT !== API_CONFIG.ENVIRONMENTS.TEST)
+  mongoose.connect(API_CONFIG.MONGOOSE_URL, { useNewUrlParser: true });
 
 app
   .use(compression())
