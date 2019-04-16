@@ -15,7 +15,11 @@ export default {
       },
       PROTECTED: {
         ROUTE: "/protected",
-        SUBROUTES: { }
+        SUBROUTES: {
+          STATUS: {
+            ROUTE: "/status"
+          }
+        }
       }
     }
   }
