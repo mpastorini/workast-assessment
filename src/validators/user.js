@@ -16,8 +16,8 @@ let schema = {
     type: String,
     required: true,
     message: {
-      type: EXCEPTIONS.BAD_REQUEST.USER.MESSAGE_MUST_BE_STRING,
-      required: EXCEPTIONS.BAD_REQUEST.USER.MESSAGE_REQUIRED
+      type: EXCEPTIONS.BAD_REQUEST.USER.AVATAR_MUST_BE_STRING,
+      required: EXCEPTIONS.BAD_REQUEST.USER.AVATAR_REQUIRED
     }
   }
 };

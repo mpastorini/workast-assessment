@@ -48,7 +48,7 @@ describe("POST /protected/users", function () {
       .expect(400, {
         "errorCode": "INVALID_BODY",
         "errors": {
-          "avatar": "MESSAGE_MUST_BE_STRING",
+          "avatar": "AVATAR_MUST_BE_STRING",
           "name": "NAME_MUST_BE_STRING"
         },
         "message": "The server cannot or will not process the request due to an apparent client error.",
@@ -70,7 +70,7 @@ describe("POST /protected/users", function () {
       .expect(400, {
         "errorCode": "INVALID_BODY",
         "errors": {
-          "avatar": "MESSAGE_REQUIRED",
+          "avatar": "AVATAR_REQUIRED",
           "name": "NAME_REQUIRED"
         },
         "message": "The server cannot or will not process the request due to an apparent client error.",
