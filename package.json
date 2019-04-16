@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "export ENVIRONMENT=test && npm run slint && mocha -r dotenv/config ./src/tests --recursive --require babel-core/register --exit",
+    "test": "export ENVIRONMENT=test && npm run slint && nyc mocha -r dotenv/config ./src/tests --recursive --require babel-core/register --exit",
     "start": "export ENVIRONMENT=development && npm run slint && nodemon --exec 'node -r dotenv/config -r babel-core/register' ./src/index.js",
     "slint": "./node_modules/.bin/eslint --fix --cache src/"
   },
@@ -26,7 +26,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "eslint": "^5.16.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "nyc": "^13.3.0"
   },
   "dependencies": {
     "compression": "^1.7.4",
