@@ -3,65 +3,61 @@ import app from "app";
 import sinon from "sinon";
 import { describe, it, afterEach } from "mocha";
 import { articlesRepository, usersRepository } from "app/repositories";
-import { dbUserMock, dbArticleMock } from "app/tests/unit/mocks";
+import { dbArticleMock } from "app/tests/unit/mocks";
 
 const sandbox = sinon.createSandbox();
 
-describe("POST /protected/articles", function () {
+describe("PATCH /protected/articles/:id", function () {
   afterEach(function () {
     sandbox.restore();
   });
 
-  it("when post a valid article, then returns status 200 and the created article", async () => {
-    sandbox.stub(usersRepository, "get").resolves(dbUserMock);
-    sandbox.stub(articlesRepository, "create").resolves(dbArticleMock);
+  it("when update an article successfully, then returns status 204", async () => {
+    sandbox.stub(articlesRepository, "update").resolves(dbArticleMock);
 
     const newTestArticle = {
-      userId: "5cb689872d078f00904b45c0",
-      title: "Example title",
-      text: "Example text",
-      tags: ["example", "interesting"]
+      title: "Example 2"
     };
 
     return await request(app)
-      .post("/protected/articles")
+      .patch("/protected/articles/5cb689872d078f00904b45c1")
       .send(newTestArticle)
       .set("Authorization", "1234")
-      .expect("Content-Type", "application/json; charset=utf-8")
-      .expect(200, {
-        _id: "5cb689872d078f00904b45c1",
-        userId: "5cb689872d078f00904b45c0",
-        title: "Example title",
-        text: "Example text",
-        tags: ["example", "interesting"]
-      });
+      .expect(204);
   });
-
-  it("when post an article with a non existent user id, then returns status 400 and error", async () => {
-    sandbox.stub(usersRepository, "get").resolves(null);
-    sandbox.stub(articlesRepository, "create").resolves(dbArticleMock);
-
-    const newTestArticle = {
-      userId: "5cb689872d078f00904b45c0",
-      title: "Example title",
-      text: "Example text",
-      tags: ["example", "interesting"]
-    };
-
+  
+  it("when update an article with invalid format id, then returns status 400 and errors", async () => {
     return await request(app)
-      .post("/protected/articles")
-      .send(newTestArticle)
+      .patch("/protected/articles/test")
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(400, {
-        "errorCode": "USER_NOT_EXISTS",
+        "errorCode": "INVALID_PARAMS",
+        "errors": {
+          "_id": "ID_INVALID_FORMAT"
+        },
         "message": "The server cannot or will not process the request due to an apparent client error.",
         "name": "BAD_REQUEST",
         "statusCode": 400
       });
   });
 
-  it("when post an invalid article, then returns status 400 and errors", async () => {
+  it("when update an article with inexistent id, then returns status 404", async () => {
+    sandbox.stub(articlesRepository, "update").resolves(null);
+
+    return await request(app)
+      .patch("/protected/articles/5cb689872d078f00904b45c1")
+      .set("Authorization", "1234")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(404, {
+        "errorCode": "ARTICLE_NOT_FOUND",
+        "message": "The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.",
+        "name": "NOT_FOUND",
+        "statusCode": 404
+      });
+  });
+  
+  it("when update an article with invalid data, then returns status 400 and errors", async () => {
     const newTestArticle = {
       userId: 1234,
       title: 1234,
@@ -70,7 +66,7 @@ describe("POST /protected/articles", function () {
     };
 
     return await request(app)
-      .post("/protected/articles")
+      .patch("/protected/articles/5cb689872d078f00904b45c1")
       .send(newTestArticle)
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
@@ -88,17 +84,13 @@ describe("POST /protected/articles", function () {
       });
   });
 
-
-  it("when post an invalid tag element, then returns status 400 and errors", async () => {
+  it("when update an article with invalid tag element, then returns status 400 and errors", async () => {
     const newTestArticle = {
-      userId: "5cb689872d078f00904b45c0",
-      title: "Example title",
-      text: "Example text",
       tags: ["example", 123]
     };
 
     return await request(app)
-      .post("/protected/articles")
+      .patch("/protected/articles/5cb689872d078f00904b45c1")
       .send(newTestArticle)
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
@@ -115,16 +107,13 @@ describe("POST /protected/articles", function () {
       });
   });
 
-  it("when post an invalid user id format, then returns status 400 and errors", async () => {
+  it("when update an article with invalid user id format, then returns status 400 and errors", async () => {
     const newTestArticle = {
-      userId: "test",
-      title: "Example title",
-      text: "Example text",
-      tags: ["example"]
+      userId: "test"
     };
 
     return await request(app)
-      .post("/protected/articles")
+      .patch("/protected/articles/5cb689872d078f00904b45c1")
       .send(newTestArticle)
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
@@ -139,22 +128,23 @@ describe("POST /protected/articles", function () {
       });
   });
 
-  it("when post an empty article, then returns status 400 and errors", async () => {
-    const newTestArticle = {};
+  it("when update an article with a non existent user id, then returns status 400 and error", async () => {
+    sandbox.stub(usersRepository, "get").resolves(null);
+
+    const newTestArticle = {
+      userId: "5cb689872d078f00904b45c0",
+      title: "Example title",
+      text: "Example text",
+      tags: ["example", "interesting"]
+    };
 
     return await request(app)
-      .post("/protected/articles")
+      .patch("/protected/articles/5cb689872d078f00904b45c1")
       .send(newTestArticle)
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(400, {
-        "errorCode": "INVALID_BODY",
-        "errors": {
-          "userId": "USER_ID_REQUIRED",
-          "title": "TITLE_REQUIRED",
-          "text": "TEXT_REQUIRED",
-          "tags": "TAGS_REQUIRED"
-        },
+        "errorCode": "USER_NOT_EXISTS",
         "message": "The server cannot or will not process the request due to an apparent client error.",
         "name": "BAD_REQUEST",
         "statusCode": 400
