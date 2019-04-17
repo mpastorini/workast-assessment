@@ -9,7 +9,8 @@ import {
   createArticleController,
   getArticleController,
   listArticlesController,
-  deleteArticleController
+  deleteArticleController,
+  patchArticleController
 } from "app/controllers";
 
 /**
@@ -21,5 +22,6 @@ export default express.Router()
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE, listArticlesController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE_BY_ID, getArticleController)
   .delete(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE_BY_ID, deleteArticleController)
+  .patch(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE_BY_ID, patchArticleController)
   .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.USERS.ROUTE, createUserController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.STATUS.ROUTE, protectedStatusController);

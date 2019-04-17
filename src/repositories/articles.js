@@ -25,6 +25,14 @@ const destroy = async (id) =>
   await Article.findByIdAndRemove(id);
 
 /**
+ * @description Delete an article by id
+ * @param id {String}
+ * @returns {Promise<null>}
+ */
+const update = async (id, changes) =>
+  await Article.findByIdAndUpdate(id, changes);
+
+/**
  * @description List articles
  * @param id {String}
  * @returns {Promise<{Article}>}
@@ -48,5 +56,6 @@ export default {
   get,
   list,
   listByTags,
-  destroy
+  destroy,
+  update
 };

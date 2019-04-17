@@ -2,6 +2,7 @@ import Validate from "validate";
 import EXCEPTIONS from "app/constants/exceptions";
 import convertToErrorObject from "app/helpers/convert-to-error-object";
 import immutableValidate from "app/helpers/immutable-validate";
+import { dissoc } from "ramda";
 
 let schema = {
   _id: {
@@ -62,6 +63,13 @@ const createSchema = new Validate({
   tags: schema.tags
 });
 
+const updateSchema = new Validate({
+  userId: dissoc("required", schema.userId),
+  title: dissoc("required", schema.title),
+  text: dissoc("required", schema.text),
+  tags: dissoc("required", schema.tags)
+});
+
 const idParameterSchema = new Validate({
   _id: schema._id
 });
@@ -73,6 +81,9 @@ const tagsParameterSchema = new Validate({
 const create = (body) => 
   convertToErrorObject(immutableValidate(createSchema, body));
 
+const update = (body) => 
+  convertToErrorObject(immutableValidate(updateSchema, body));
+
 const idParameter = (body) =>
   convertToErrorObject(immutableValidate(idParameterSchema, body));
 
@@ -82,5 +93,6 @@ const tagsParameter = (body) =>
 export default {
   create,
   idParameter,
-  tagsParameter
+  tagsParameter,
+  update
 };
