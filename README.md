@@ -14,11 +14,11 @@ npm install
 ## Execution
 Dev
 ```
-docker-compose build --build-args ENVIRONMENT=development && docker-compose up
+docker-compose build --build-arg ENVIRONMENT=development && docker-compose up
 ```
 Prod
 ```
-docker-compose build --build-args ENVIRONMENT=production && docker-compose up
+docker-compose build --build-arg ENVIRONMENT=production && docker-compose up
 ```
 Local
 ```
