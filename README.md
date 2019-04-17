@@ -24,9 +24,11 @@ npm install
 npm start:[development|production]
 ```
 
-**Note1**: To change the `PORT`, you can pass `PORT` argument to docker-compose build, or .env file in the local case, by default it will be the `80`.
+**Note1**: `[development|production]` means it could be one or other option, replace it by `development` or `production` please.
 
-**Note2**: Development builds both local and containerized, runs with nodemon, so you the project reloads when you save a watched file.
+**Note2**: To change the `PORT`, you can pass `PORT` argument to docker-compose build, or .env file in the local case, by default it will be the `80`.
+
+**Note3**: Development builds both local and containerized, runs with nodemon, so you the project reloads when you save a watched file.
 
 ## Routes
 
