@@ -24,6 +24,7 @@ Local
 ```
 npm start
 ```
+NOTE: You can pass PORT argument to docker-compose build, by default it will be the 80
 
 ## Auto-Documentation factors
 - Business Operations I/O: ./src/tests
