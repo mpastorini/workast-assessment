@@ -30,12 +30,33 @@ npm start:[development|production]
 
 **Note3**: Development builds both local and containerized, runs with nodemon, so you the project reloads when you save a watched file.
 
-## Routes
+## Tests
+The only tests in this project are unit, all of them treat with mock data so all the functionalities are insured except the database operations and its schemas integrity.
+
+To run the tests
+```
+npm test
+```
+To also see the coverage
+```
+npm run test:coverage
+```
+
+## Auto-Documentation factors
+- Business Operations I/O: `./src/tests`
+- Hard data (Exceptions): `./src/constants`
+- Functionality: jsDoc above functions and modules
+
+**Note**: There is only the notation, there is not real generated docs.
+
+## Endpoints
 
 `GET /status`
+
 Returns public API status
 
 `GET /protected/status`
+
 Returns logged in or 401
 
 `POST /protected/users`
@@ -48,6 +69,7 @@ Returns logged in or 401
 Creates an user and returns it
 
 `GET /protected/articles[?tags=n]`
+
 Returns a list of articles filter by tags or the whole list
 To query for several tags `?tags=tag1&tags=tag2&tags=tagN`
 
@@ -131,25 +153,6 @@ userId:
   USER_ID_INVALID_FORMAT
   USER_ID_MUST_BE_STRING
   USER_ID_REQUIRED
-```
-
-## Auto-Documentation factors
-- Business Operations I/O: `./src/tests`
-- Hard data (Exceptions): `./src/constants`
-- Functionality: jsDoc above functions and modules
-
-**Note**: There is only the notation, there is not real generated docs.
-
-## Tests
-The only tests in this project are unit, all of them treat with mock data so all the functionalities are insured except the database operations and its schemas integrity.
-
-To run the tests
-```
-npm test
-```
-To also see the coverage
-```
-npm run test:coverage
 ```
 
 ## Ramda
