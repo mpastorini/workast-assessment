@@ -12,23 +12,17 @@ First of all
 cp .env_example .env
 ```
 
-Run it as a container
+Run it
 ```
 docker-compose build --build-arg ENVIRONMENT=[development|production]
 docker-compose up
 ```
 
-Or Locally
-```
-npm install
-npm start:[development|production]
-```
-
 **Note1**: `[development|production]` means it could be one or other option, replace it by `development` or `production` please.
 
-**Note2**: To change the `PORT`, you can pass `PORT` argument to docker-compose build, or .env file in the local case, by default it will be the `80`.
+**Note2**: To change the `PORT`, you can pass `PORT` argument to docker-compose build, by default it will be the `80`.
 
-**Note3**: Development builds both local and containerized, runs with nodemon, so you the project reloads when you save a watched file.
+**Note3**: Development builds runs with nodemon, so you the project reloads when you save a watched file.
 
 ## Tests
 The only tests in this project are unit, all of them treat with mock data so all the functionalities are insured except the database operations and its schemas integrity.
