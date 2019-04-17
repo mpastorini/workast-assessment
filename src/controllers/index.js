@@ -3,6 +3,7 @@ import protectedStatusController from "./protected/status";
 import createUserController from "./protected/user/create";
 import createArticleController from "./protected/article/create";
 import getArticleController from "./protected/article/get";
+import listArticlesController from "./protected/article/list";
 
 /**
  * @description Route Controllers
@@ -12,5 +13,6 @@ export default {
   protectedStatusController,
   createUserController,
   createArticleController,
-  getArticleController
+  getArticleController,
+  listArticlesController
 };

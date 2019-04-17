@@ -7,7 +7,8 @@ import {
   protectedStatusController, 
   createUserController,
   createArticleController,
-  getArticleController
+  getArticleController,
+  listArticlesController
 } from "app/controllers";
 
 /**
@@ -15,6 +16,7 @@ import {
  */
 export default express.Router()
   .use(authenticationMiddleware)
+  .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE, listArticlesController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE_BY_ID, getArticleController)
   .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE, createArticleController)
   .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.USERS.ROUTE, createUserController)
