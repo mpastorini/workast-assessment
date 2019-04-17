@@ -127,6 +127,7 @@ USER_NOT_EXISTS
 ```
 
 Possible body error codes
+
 User
 ```
 name
