@@ -100,6 +100,7 @@ You can send the entire body or only a part
 Updates an article by its id and returns 204
 
 `DELETE /protected/articles/:id`
+
 Deletes an article by its id and returns 204
 
 ## Exceptions
