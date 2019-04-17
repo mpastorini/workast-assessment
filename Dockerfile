@@ -2,6 +2,8 @@ FROM node:8.11.3-alpine
 
 ARG ENVIRONMENT
 ENV ENVIRONMENT $ENVIRONMENT
+ARG PORT
+ENV PORT $PORT
 
 # Set up environment
 ENV TERM=xterm-256color
@@ -21,5 +23,5 @@ COPY . $PROJECT_ROOT
 RUN cd $PROJECT_ROOT/ && npm install
 
 # Start
-EXPOSE 80
+EXPOSE $PORT
 CMD npm run start:${ENVIRONMENT}
