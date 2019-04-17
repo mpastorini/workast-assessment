@@ -5,33 +5,32 @@
 - Docker-compose
 - NodeJS v8.11.3 (Recommended for local builds)
 
-## Installation
+## Instructions
+
+First of all
 ```
 cp .env_example .env
-npm install
 ```
 
-## Execution
-Dev
+Run it as a container
 ```
-docker-compose build --build-arg ENVIRONMENT=development && docker-compose up
+docker-compose build --build-arg ENVIRONMENT=[development|production]
+docker-compose up
 ```
-Prod
+**Note**: You can pass `PORT` argument to docker-compose build, by default it will be the `80`
+
+Or Locally
 ```
-docker-compose build --build-arg ENVIRONMENT=production && docker-compose up
-```
-Local
-```
+npm install
 npm start
 ```
-NOTE: You can pass PORT argument to docker-compose build, by default it will be the 80
 
 ## Auto-Documentation factors
-- Business Operations I/O: ./src/tests
-- Hard data: ./src/constants
+- Business Operations I/O: `./src/tests`
+- Hard data: `./src/constants`
 - Functionality: jsDoc above functions and modules
 
-Note: There is only the notation, there is not real generated docs.
+**Note**: There is only the notation, there is not real generated docs.
 
 ## Tests
 The only tests in this project are unit, all of them treat with mock data so all the functionalities are insured except the database operations and its schemas integrity.
@@ -47,7 +46,7 @@ npm run test:coverage
 
 ## Ramda
 
-This project uses [ramda](https://ramdajs.com/), take in count that it curry all the functions.
+This project uses [ramda](https://ramdajs.com/), take in count that it `curries` all the functions.
 So, for example (in the article decorator) when I do:
 ```
 toReturn: pick(DECORATORS.ARTICLE.TO_RETURN)
