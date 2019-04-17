@@ -25,6 +25,7 @@ npm start:[development|production]
 ```
 
 **Note1**: To change the `PORT`, you can pass `PORT` argument to docker-compose build, or .env file in the local case, by default it will be the `80`.
+
 **Note2**: Development builds both local and containerized, runs with nodemon, so you the project reloads when you save a watched file.
 
 ## Routes
@@ -76,6 +77,59 @@ Updates an article by its id and returns 204
 
 `DELETE /protected/articles/:id`
 Deletes an article by its id and returns 204
+
+## Exceptions
+
+Exception schema
+```
+{
+  "errorCode": String,
+  "errors": Object,
+  "message": String,
+  "name": String,
+  "statusCode": Number
+}
+```
+
+Possible Codes
+```
+INVALID_BODY
+INVALID_PARAMS
+ARTICLE_NOT_FOUND
+USER_NOT_EXISTS
+```
+
+Possible body error codes
+User
+```
+name
+  NAME_MUST_BE_STRING
+  NAME_REQUIRED
+avatar
+  AVATAR_MUST_BE_STRING
+  AVATAR_REQUIRED
+```
+Article
+```
+id:
+  ID_MUST_BE_STRING
+  ID_REQUIRED
+  ID_INVALID_FORMAT
+title:
+  TITLE_MUST_BE_STRING
+  TITLE_REQUIRED
+text:
+  TEXT_MUST_BE_STRING
+  TEXT_REQUIRED
+tags:
+  TAGS_MUST_BE_ARRAY
+  TAGS_REQUIRED
+  TAG_MUST_BE_STRING
+userId:
+  USER_ID_INVALID_FORMAT
+  USER_ID_MUST_BE_STRING
+  USER_ID_REQUIRED
+```
 
 ## Auto-Documentation factors
 - Business Operations I/O: `./src/tests`
