@@ -7,9 +7,13 @@ let schema = {
   userId: {
     type: String,
     required: true,
+    use: {
+      format: id => id.match(/^[0-9a-fA-F]{24}$/)
+    },
     message: {
       type: EXCEPTIONS.BAD_REQUEST.ARTICLE.USER_ID_MUST_BE_STRING,
-      required: EXCEPTIONS.BAD_REQUEST.ARTICLE.USER_ID_REQUIRED
+      required: EXCEPTIONS.BAD_REQUEST.ARTICLE.USER_ID_REQUIRED,
+      format: EXCEPTIONS.BAD_REQUEST.ARTICLE.USER_ID_INVALID_FORMAT
     }
   },
   title: {

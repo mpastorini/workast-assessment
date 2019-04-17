@@ -17,7 +17,7 @@ describe("POST /protected/articles", function () {
     sandbox.stub(articlesRepository, "create").resolves(dbArticleMock);
 
     const newTestArticle = {
-      userId: "user1",
+      userId: "5cb689872d078f00904b45c0",
       title: "Example title",
       text: "Example text",
       tags: ["example", "interesting"]
@@ -29,8 +29,8 @@ describe("POST /protected/articles", function () {
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(200, {
-        _id: "article1",
-        userId: "user1",
+        _id: "5cb689872d078f00904b45c1",
+        userId: "5cb689872d078f00904b45c0",
         title: "Example title",
         text: "Example text",
         tags: ["example", "interesting"]
@@ -66,7 +66,7 @@ describe("POST /protected/articles", function () {
 
   it("when post an invalid tag element, then returns status 400 and errors", async () => {
     const newTestArticle = {
-      userId: "user1",
+      userId: "5cb689872d078f00904b45c0",
       title: "Example title",
       text: "Example text",
       tags: ["example", 123]
@@ -83,6 +83,30 @@ describe("POST /protected/articles", function () {
           "tags": {
             "1": "TAG_MUST_BE_STRING"
           }
+        },
+        "message": "The server cannot or will not process the request due to an apparent client error.",
+        "name": "BAD_REQUEST",
+        "statusCode": 400
+      });
+  });
+
+  it("when post an invalid user id format, then returns status 400 and errors", async () => {
+    const newTestArticle = {
+      userId: "test",
+      title: "Example title",
+      text: "Example text",
+      tags: ["example"]
+    };
+
+    return await request(app)
+      .post("/protected/articles")
+      .send(newTestArticle)
+      .set("Authorization", "1234")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(400, {
+        "errorCode": "INVALID_BODY",
+        "errors": {
+          "userId": "USER_ID_INVALID_FORMAT"
         },
         "message": "The server cannot or will not process the request due to an apparent client error.",
         "name": "BAD_REQUEST",
