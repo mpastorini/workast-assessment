@@ -26,7 +26,7 @@ describe("POST /protected/users", function () {
       .set("Authorization", "1234")
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(200, {
-        _id: "user1",
+        _id: "5cb689872d078f00904b45c0",
         name: "test",
         avatar: "http://test/img/test.jpg"
       });

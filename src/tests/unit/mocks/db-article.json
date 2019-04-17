@@ -1,6 +1,6 @@
 {
-  "_id": "article1",
-  "userId": "user1",
+  "_id": "5cb689872d078f00904b45c1",
+  "userId": "5cb689872d078f00904b45c0",
   "title": "Example title",
   "text": "Example text",
   "tags": ["example", "interesting"],
