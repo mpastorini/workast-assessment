@@ -32,7 +32,7 @@ npm test
 ```
 To also see the coverage
 ```
-npm test:coverage
+npm run test:coverage
 ```
 
 ## Ramda
