@@ -74,6 +74,7 @@ Returns a list of articles filter by tags or the whole list
 To query for several tags `?tags=tag1&tags=tag2&tags=tagN`
 
 `GET /protected/articles/:id`
+
 Return an article by its id.
 
 `POST /protected/articles`
@@ -88,6 +89,7 @@ Return an article by its id.
 Creates an article and returns it (The user must exists)
 
 `PATCH /protected/articles/:id`
+
 You can send the entire body or only a part
 ```
 {
