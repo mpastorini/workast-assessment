@@ -66,13 +66,21 @@ const idParameterSchema = new Validate({
   _id: schema._id
 });
 
+const tagsParameterSchema = new Validate({
+  tags: schema.tags
+});
+
 const create = (body) => 
   convertToErrorObject(immutableValidate(createSchema, body));
 
 const idParameter = (body) =>
   convertToErrorObject(immutableValidate(idParameterSchema, body));
 
+const tagsParameter = (body) =>
+  convertToErrorObject(immutableValidate(tagsParameterSchema, body));
+
 export default {
   create,
-  idParameter
+  idParameter,
+  tagsParameter
 };
