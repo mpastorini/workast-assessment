@@ -23,7 +23,8 @@ export default {
             ROUTE: "/users"
           },
           ARTICLES: {
-            ROUTE: "/articles"
+            ROUTE: "/articles",
+            ROUTE_BY_ID: "/articles/:id"
           }
         }
       }

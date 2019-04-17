@@ -2,7 +2,7 @@ import request from "supertest";
 import app from "app";
 import { describe, it } from "mocha";
 
-describe("GET /protected/users", function () {
+describe("GET /protected/status", function () {
   it("When request protected status with valid token, then return 401", async () =>
     await request(app)
       .get("/protected/status")
@@ -10,6 +10,7 @@ describe("GET /protected/users", function () {
       .expect("Content-Type", "text/html; charset=utf-8")
       .expect(200, "Logged in")
   );
+
   it("When request protected status with invalid token, then return 401", async () =>
     await request(app)
       .get("/protected/status")
@@ -17,6 +18,7 @@ describe("GET /protected/users", function () {
       .expect("Content-Type", "application/json; charset=utf-8")
       .expect(401, { name: "UNAUTHORIZED", "message": "Invalid token", "statusCode": 401})
   );
+
   it("When request protected status without token, then return 401", async () =>
     await request(app)
       .get("/protected/status")
