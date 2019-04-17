@@ -1,6 +1,7 @@
 import createArticleService from "./create";
 import getArticleService from "./get";
 import listArticlesService from "./list";
+import deleteArticleService from "./destroy";
 
 /**
  * @description Article business layer
@@ -8,5 +9,6 @@ import listArticlesService from "./list";
 export {
   createArticleService,
   getArticleService,
-  listArticlesService
+  listArticlesService,
+  deleteArticleService
 };

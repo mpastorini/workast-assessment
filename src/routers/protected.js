@@ -8,7 +8,8 @@ import {
   createUserController,
   createArticleController,
   getArticleController,
-  listArticlesController
+  listArticlesController,
+  deleteArticleController
 } from "app/controllers";
 
 /**
@@ -16,8 +17,9 @@ import {
  */
 export default express.Router()
   .use(authenticationMiddleware)
+  .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE, createArticleController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE, listArticlesController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE_BY_ID, getArticleController)
-  .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE, createArticleController)
+  .delete(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE_BY_ID, deleteArticleController)
   .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.USERS.ROUTE, createUserController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.STATUS.ROUTE, protectedStatusController);

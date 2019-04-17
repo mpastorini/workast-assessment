@@ -7,7 +7,7 @@ import articleDecorator from "app/decorators/article";
 /**
  * @description Article creation business layer
  * @param newArticle {Object}
- * @return {Promise<{User}>}
+ * @return {Promise<{Article}>}
  */
 export default async (newArticle) => {
   const articleToDB = articleDecorator.toDb(newArticle);

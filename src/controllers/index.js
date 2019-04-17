@@ -4,6 +4,7 @@ import createUserController from "./protected/user/create";
 import createArticleController from "./protected/article/create";
 import getArticleController from "./protected/article/get";
 import listArticlesController from "./protected/article/list";
+import deleteArticleController from "./protected/article/destroy";
 
 /**
  * @description Route Controllers
@@ -14,5 +15,6 @@ export default {
   createUserController,
   createArticleController,
   getArticleController,
-  listArticlesController
+  listArticlesController,
+  deleteArticleController
 };
