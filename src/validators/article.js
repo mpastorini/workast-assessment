@@ -30,10 +30,10 @@ let schema = {
   },
   tags: {
     type: Array,
-    each: { type: String },
+    each: { type: String, message: EXCEPTIONS.BAD_REQUEST.ARTICLE.TAG_MUST_BE_STRING },
     required: true,
     message: {
-      type: EXCEPTIONS.BAD_REQUEST.ARTICLE.TAGS_MUST_BE_STRING_ARRAY,
+      type: EXCEPTIONS.BAD_REQUEST.ARTICLE.TAGS_MUST_BE_ARRAY,
       required: EXCEPTIONS.BAD_REQUEST.ARTICLE.TAGS_REQUIRED
     }
   }
