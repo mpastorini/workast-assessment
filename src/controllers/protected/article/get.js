@@ -1,7 +1,7 @@
 import { getArticleService } from "app/services/articles";
 
 /**
- * @description Article getting route controller
+ * @description Article getting by id route controller
  * @returns {Promise<{Article}>}
  */
 export default async (request, response) => {

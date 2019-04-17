@@ -11,15 +11,33 @@ const create = async (newArticle) =>
 /**
  * @description Get an article by id
  * @param id {String}
- * @returns {Promise<{User}>}
+ * @returns {Promise<{Article}>}
  */
 const get = async (id) =>
   await Article.findById(id);
 
 /**
- * @description User persistence layer
+ * @description List articles
+ * @param id {String}
+ * @returns {Promise<{Article}>}
+ */
+const list = async () =>
+  await Article.find({});
+
+/**
+ * @description List articles by tags
+ * @param id {String}
+ * @returns {Promise<{Array<{Article}>}>}
+ */
+const listByTags = async (tags) =>
+  await Article.find({ tags: {$in: tags} });
+
+/**
+ * @description Article persistence layer
  */
 export default {
   create,
-  get
+  get,
+  list,
+  listByTags
 };
