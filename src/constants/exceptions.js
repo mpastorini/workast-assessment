@@ -6,6 +6,9 @@ export default {
     TOKEN_REQUIRED: "Token required",
     TOKEN_UNAUTHORIZED: "Invalid token"
   },
+  NOT_FOUND: {
+    "ARTICLE": "ARTICLE_NOT_FOUND"
+  },
   BAD_REQUEST: {
     INVALID_PARAMS: "INVALID_PARAMS",
     INVALID_BODY: "INVALID_BODY",
@@ -16,7 +19,8 @@ export default {
       AVATAR_MUST_BE_STRING: "AVATAR_MUST_BE_STRING",
       AVATAR_REQUIRED: "AVATAR_REQUIRED"
     },
-    ARTICLE: {      
+    ARTICLE: {
+
       ID_MUST_BE_STRING: "ID_MUST_BE_STRING",
       ID_REQUIRED: "ID_REQUIRED",
       ID_INVALID_FORMAT: "ID_INVALID_FORMAT",
