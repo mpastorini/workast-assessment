@@ -10,9 +10,10 @@ import userDecorator from "app/decorators/user";
  * @return {Promise<{User}>}
  */
 export default async (newUser) => {
-  const errors = await userValidator.create(newUser);
+  const userToDb = userDecorator.toDb(newUser);
+  const errors = userValidator.create(userToDb);
   if(errors) throw new BadRequestException(EXCEPTIONS.BAD_REQUEST.INVALID_BODY, errors);
   
-  const dbUser = await usersRepository.create(newUser);
-  return userDecorator(dbUser);
+  const dbUser = await usersRepository.create(userToDb);
+  return userDecorator.toReturn(dbUser);
 };

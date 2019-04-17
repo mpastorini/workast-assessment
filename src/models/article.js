@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export default mongoose.model("User", {
+export default mongoose.model("Article", {
   userId: String,
   title: String,
   text: String,

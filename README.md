@@ -34,3 +34,15 @@ To also see the coverage
 ```
 npm test:coverage
 ```
+
+## Ramda
+
+This project uses [ramda](https://ramdajs.com/), take in count that it curry all the functions.
+So, for example (in the article decorator) when I do:
+```
+toReturn: pick(DECORATORS.ARTICLE.TO_RETURN)
+```
+It means
+```
+toReturn: article => pick(DECORATORS.ARTICLE.TO_RETURN, article)
+```

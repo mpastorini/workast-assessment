@@ -21,6 +21,9 @@ export default {
           },
           USERS: {
             ROUTE: "/users"
+          },
+          ARTICLES: {
+            ROUTE: "/articles"
           }
         }
       }

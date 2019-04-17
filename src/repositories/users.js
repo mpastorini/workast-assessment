@@ -13,7 +13,7 @@ const create = async (newUser) =>
  * @param id {String}
  * @returns {Promise<{User}>}
  */
-const get = async (id) => 
+const get = async (id) =>
   await User.findById(id);
 
 /**

@@ -12,5 +12,5 @@ module.exports = function BadRequest(errorCode, errors) {
   this.message = httpStatus["400_MESSAGE"];
   this.statusCode = httpStatus.BAD_REQUEST;
   this.errorCode = errorCode;
-  this.errors = errors;
+  if(errors) this.errors = errors;
 };

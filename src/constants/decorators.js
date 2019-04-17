@@ -1,8 +1,18 @@
 export default {
   USER: {
-    PROPERTIES: ["_id", "name", "avatar"]
+    TO_RETURN: {
+      PROPERTIES: ["_id", "name", "avatar"]
+    },
+    TO_DB: {
+      PROPERTIES: ["name", "avatar"]
+    }
   },
   ARTICLE: {
-    PROPERTIES: ["_id", "userId", "title", "text", "tags"]
+    TO_RETURN: {
+      PROPERTIES: ["_id", "userId", "title", "text", "tags"]
+    },
+    TO_DB: {
+      PROPERTIES: ["userId", "title", "text", "tags"]
+    }
   }
 };
