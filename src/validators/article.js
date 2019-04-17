@@ -4,6 +4,18 @@ import convertToErrorObject from "app/helpers/convert-to-error-object";
 import immutableValidate from "app/helpers/immutable-validate";
 
 let schema = {
+  _id: {
+    type: String,
+    required: true,
+    use: {
+      format: id => id.match(/^[0-9a-fA-F]{24}$/)
+    },
+    message: {
+      type: EXCEPTIONS.BAD_REQUEST.ARTICLE.ID_MUST_BE_STRING,
+      required: EXCEPTIONS.BAD_REQUEST.ARTICLE.ID_REQUIRED,
+      format: EXCEPTIONS.BAD_REQUEST.ARTICLE.ID_INVALID_FORMAT
+    }
+  },
   userId: {
     type: String,
     required: true,
@@ -50,8 +62,17 @@ const createSchema = new Validate({
   tags: schema.tags
 });
 
-const create = (body) => convertToErrorObject(immutableValidate(createSchema, body));
+const idParameterSchema = new Validate({
+  _id: schema._id
+});
+
+const create = (body) => 
+  convertToErrorObject(immutableValidate(createSchema, body));
+
+const idParameter = (body) =>
+  convertToErrorObject(immutableValidate(idParameterSchema, body));
 
 export default {
-  create
+  create,
+  idParameter
 };

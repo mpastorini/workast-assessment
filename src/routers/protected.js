@@ -6,7 +6,8 @@ import { authenticationMiddleware } from "app/middlewares";
 import { 
   protectedStatusController, 
   createUserController,
-  createArticleController
+  createArticleController,
+  getArticleController
 } from "app/controllers";
 
 /**
@@ -14,6 +15,7 @@ import {
  */
 export default express.Router()
   .use(authenticationMiddleware)
+  .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE_BY_ID, getArticleController)
   .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.ARTICLES.ROUTE, createArticleController)
   .post(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.USERS.ROUTE, createUserController)
   .get(ROUTES.API.SUBROUTES.PROTECTED.SUBROUTES.STATUS.ROUTE, protectedStatusController);
