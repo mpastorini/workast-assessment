@@ -8,6 +8,8 @@ services:
   api:
     build:
       context: ./
+      args:
+        ENVIRONMENT: development
     ports:
       - "80:80"
     volumes:

@@ -12,8 +12,17 @@ npm install
 ```
 
 ## Execution
+Dev
 ```
-docker-compose build && docker-compose up
+docker-compose build --build-args ENVIRONMENT=development && docker-compose up
+```
+Prod
+```
+docker-compose build --build-args ENVIRONMENT=production && docker-compose up
+```
+Local
+```
+npm start
 ```
 
 ## Auto-Documentation factors
