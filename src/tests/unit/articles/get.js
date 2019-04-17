@@ -7,7 +7,7 @@ import { dbArticleMock } from "app/tests/unit/mocks";
 
 const sandbox = sinon.createSandbox();
 
-describe("GET /protected/articles", function () {
+describe("GET /protected/articles/:id", function () {
   afterEach(function () {
     sandbox.restore();
   });

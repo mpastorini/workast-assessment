@@ -5,7 +5,7 @@ import EXCEPTIONS from "app/constants/exceptions";
 import articleDecorator from "app/decorators/article";
 
 /**
- * @description User creation business layer
+ * @description Article creation business layer
  * @param newArticle {Object}
  * @return {Promise<{User}>}
  */

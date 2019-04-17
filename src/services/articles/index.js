@@ -2,7 +2,7 @@ import createArticleService from "./create";
 import getArticleService from "./get";
 
 /**
- * @description User business layer
+ * @description Article business layer
  */
 export {
   createArticleService,
