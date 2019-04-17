@@ -8,7 +8,7 @@ import { map } from "ramda";
 /**
  * @description Article getting business layer
  * @param newArticle {Object}
- * @return {Promise<{User}>}
+ * @return {Promise<{Article}>}
  */
 export default async (tags) => {
   if(tags){
