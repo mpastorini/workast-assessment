@@ -45,4 +45,19 @@ describe("GET /protected/articles", function () {
         "statusCode": 400
       });
   });
+
+  it("when request an article with inexistent id, then returns status 404", async () => {
+    sandbox.stub(articlesRepository, "get").resolves(null);
+
+    return await request(app)
+      .get("/protected/articles/5cb689872d078f00904b45c1")
+      .set("Authorization", "1234")
+      .expect("Content-Type", "application/json; charset=utf-8")
+      .expect(404, {
+        "errorCode": "ARTICLE_NOT_FOUND",
+        "message": "The requested resource could not be found but may be available in the future. Subsequent requests by the client are permissible.",
+        "name": "NOT_FOUND",
+        "statusCode": 404
+      });
+  });
 });
