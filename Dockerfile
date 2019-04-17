@@ -1,5 +1,8 @@
 FROM node:8.11.3-alpine
 
+ARG ENVIRONMENT
+ENV ENVIRONMENT $ENVIRONMENT
+
 # Set up environment
 ENV TERM=xterm-256color
 ENV PROJECT_NAME workast-assessment
@@ -19,4 +22,4 @@ RUN cd $PROJECT_ROOT/ && npm install
 
 # Start
 EXPOSE 80
-CMD ["npm", "start"]
+CMD npm run start:${ENVIRONMENT}
